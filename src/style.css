@@ -11,4 +11,6 @@ body {
     font-family: 'PT Sans', sans-serif;
     background-color: var(--grey);
     color: var(--white);
+    padding: 0;
+    margin: 0;
 }
