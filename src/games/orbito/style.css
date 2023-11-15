@@ -1,0 +1,55 @@
+div.orbito {
+
+}
+
+div.orbito__board {
+    display: grid;
+    height: 400px;
+    width: 400px;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    margin: 25px auto;
+    border: solid var(--white) 1px;
+}
+
+div.orbito__board__cell {
+    box-sizing: border-box;
+    border: solid var(--white) 1px;
+    cursor: pointer;
+    background-color: var(--brown);
+    overflow: hidden;
+}
+
+div.orbito__board__cell:hover {
+    opacity: 0.5;
+}
+
+div.orbito__board__cell > div {
+    text-align: center;
+}
+
+div.orbito__board__cell>div>svg {
+    height: 50px;
+    margin-top: 25px;
+}
+
+div#orbito__cell-1,
+div#orbito__cell-2,
+div#orbito__cell-3, 
+div#orbito__cell-6 {
+    transform: rotate(-90deg);
+}
+
+div#orbito__cell-0,
+div#orbito__cell-4,
+div#orbito__cell-8,
+div#orbito__cell-5 {
+    transform: rotate(180deg);
+}
+
+div#orbito__cell-12,
+div#orbito__cell-13,
+div#orbito__cell-14,
+div#orbito__cell-9 {
+    transform: rotate(90deg);
+}
