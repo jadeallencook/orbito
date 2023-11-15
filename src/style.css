@@ -1,0 +1,14 @@
+/* global color variables */
+:root {
+    --grey: #393E41;
+    --green: #00BFB2;
+    --brown: #A38560;
+    --red: #EA1744;
+    --white: #FAFAFA;
+}
+
+body {
+    font-family: 'PT Sans', sans-serif;
+    background-color: var(--grey);
+    color: var(--white);
+}
