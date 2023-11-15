@@ -1,0 +1,17 @@
+footer {
+    text-align: center;
+    background-color: var(--brown);
+    box-sizing: border-box;
+    padding: 5px 10px;
+    width: 100%;
+    padding: 25px 0;
+}
+
+footer > p {
+    margin: 0;
+    font-size: 0.75em;
+}
+
+footer > p:first-child {
+    font-weight: bold;
+}
