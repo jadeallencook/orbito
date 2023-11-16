@@ -12,6 +12,14 @@ div.orbito__board {
     border: solid var(--white) 1px;
 }
 
+div.orbito > p.orbito__message {
+    text-align: center;
+}
+
+div.orbito > h1.orbito__title {
+    text-align: center;
+}
+
 div.orbito__board__cell {
     box-sizing: border-box;
     border: solid var(--white) 1px;
