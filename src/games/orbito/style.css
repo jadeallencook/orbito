@@ -1,7 +1,3 @@
-div.orbito {
-
-}
-
 div.orbito__board {
     display: grid;
     height: 400px;
@@ -14,6 +10,10 @@ div.orbito__board {
 
 div.orbito > p.orbito__message {
     text-align: center;
+}
+
+div.orbito>p.orbito__message > span {
+    display: block;
 }
 
 div.orbito > h1.orbito__title {

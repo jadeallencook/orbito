@@ -19,37 +19,87 @@ const Teardrop = ({ value }) => {
   );
 };
 
+const rotateBoard = (board) => {
+  const newBoard = Array(16).fill(null);
+  newBoard[0] = board[1];
+  newBoard[1] = board[2];
+  newBoard[2] = board[3];
+  newBoard[3] = board[7];
+  newBoard[4] = board[0];
+  newBoard[5] = board[6];
+  newBoard[6] = board[10];
+  newBoard[7] = board[11];
+  newBoard[8] = board[4];
+  newBoard[9] = board[5];
+  newBoard[10] = board[9];
+  newBoard[11] = board[15];
+  newBoard[12] = board[8];
+  newBoard[13] = board[12];
+  newBoard[14] = board[13];
+  newBoard[15] = board[14];
+  return newBoard;
+};
+
+const checkIfWinner = (board) => {
+  const winningCombinations = [
+    [0, 1, 2, 3],
+    [4, 5, 6, 7],
+    [0, 4, 8, 12],
+    [1, 5, 9, 13],
+    [2, 6, 10, 14],
+    [3, 7, 11, 15],
+    [8, 9, 10, 11],
+    [12, 13, 14, 15],
+  ];
+  for (let i = 0; i < winningCombinations.length; i++) {
+    const [a, b, c, d] = winningCombinations[i];
+    if (
+      board[a] !== null &&
+      board[a] === board[b] &&
+      board[a] === board[c] &&
+      board[a] === board[d]
+    ) {
+      return board[a];
+    }
+  }
+  return null;
+};
+
 const Orbito = () => {
   const [board, setBoard] = useState(Array(16).fill(null));
   const [isPlayerOne, setIsPlayerOne] = useState(true);
+  const [winner, setWinner] = useState(null);
 
-  const rotateBoard = (board) => {
-    const newBoard = Array(16).fill(null);
-    newBoard[0] = board[1];
-    newBoard[1] = board[2];
-    newBoard[2] = board[3];
-    newBoard[3] = board[7];
-    newBoard[4] = board[0];
-    newBoard[5] = board[6];
-    newBoard[6] = board[10];
-    newBoard[7] = board[11];
-    newBoard[8] = board[4];
-    newBoard[9] = board[5];
-    newBoard[10] = board[9];
-    newBoard[11] = board[15];
-    newBoard[12] = board[8];
-    newBoard[13] = board[12];
-    newBoard[14] = board[13];
-    newBoard[15] = board[14];
-    return newBoard;
+  const handleWinner = (winner) => {
+    console.log(winner);
+    setWinner(winner);
   };
 
   const handleClick = (index) => {
-    let newBoard = [...board];
+    if (winner !== null) {
+      return;
+    }
+
+    const newBoard = [...board];
     newBoard[index] = isPlayerOne;
-    newBoard = rotateBoard(newBoard);
-    setBoard(newBoard);
+    const rotatedBoard = rotateBoard(newBoard);
+    const isWinner = checkIfWinner(newBoard) || checkIfWinner(rotatedBoard);
+
+    if (checkIfWinner(rotatedBoard) !== null) {
+      setBoard(rotatedBoard);
+    } else if (checkIfWinner(newBoard)) {
+      setBoard(newBoard);
+    }
+
+    if (isWinner !== null) {
+      handleWinner(isWinner);
+      return;
+    }
+
+    setBoard(rotatedBoard);
+
     setIsPlayerOne(!isPlayerOne);
+    return;
   };
 
   return (
@@ -60,7 +110,7 @@ const Orbito = () => {
           <div
             className="orbito__board__cell"
             id={`orbito__cell-${index}`}
-            onClick={() => handleClick(index)}
+            onClick={winner !== null ? null : () => handleClick(index)}
             key={`orbito__cell-${index}`}
           >
             <div>
@@ -70,9 +120,15 @@ const Orbito = () => {
         ))}
       </div>
       <p className="orbito__message">
-        <span className="orbito__message__player">
-          {isPlayerOne ? "Player 1 (Red)" : "Player 2 (Green)"}
-        </span>
+        <>
+          <span>
+            {isPlayerOne || winner === isPlayerOne
+              ? "Player 1 (Red)"
+              : "Player 2 (Green)"}
+          </span>
+
+          <span>{winner !== null ? "WINNER" : "It's your turn..."}</span>
+        </>
       </p>
     </div>
   );
