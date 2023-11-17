@@ -69,9 +69,10 @@ const Orbito = () => {
   const [board, setBoard] = useState(Array(16).fill(null));
   const [isPlayerOne, setIsPlayerOne] = useState(true);
   const [winner, setWinner] = useState(null);
+  const currentPlayer =
+    winner !== null ? (winner ? true : false) : isPlayerOne ? true : false;
 
   const handleWinner = (winner) => {
-    console.log(winner);
     setWinner(winner);
   };
 
@@ -87,7 +88,7 @@ const Orbito = () => {
 
     if (checkIfWinner(rotatedBoard) !== null) {
       setBoard(rotatedBoard);
-    } else if (checkIfWinner(newBoard)) {
+    } else if (checkIfWinner(newBoard) !== null) {
       setBoard(newBoard);
     }
 
@@ -121,14 +122,50 @@ const Orbito = () => {
       </div>
       <p className="orbito__message">
         <>
-          <span>
-            {isPlayerOne || winner === isPlayerOne
-              ? "Player 1 (Red)"
-              : "Player 2 (Green)"}
+          <span className={`player ${currentPlayer ? "red" : "green"}`}>
+            {currentPlayer ? "Player 1" : "Player 2"}
           </span>
 
-          <span>{winner !== null ? "WINNER" : "It's your turn..."}</span>
+          <span>
+            {winner !== null ? "WINNER" : "Move opponent and make your move..."}
+          </span>
         </>
+      </p>
+      <div className="orbito__buttons">
+        <button
+          className="red"
+          onClick={() => {
+            setBoard(Array(16).fill(null));
+            setIsPlayerOne(true);
+            setWinner(null);
+          }}
+        >
+          Reset Game
+        </button>
+        <button className="green">End Turn</button>
+      </div>
+      <p className="orbito__links">
+        Win by aligning four marbles of your color in a row—horizontal,
+        vertical, or diagonal—on the dynamic game board. Each turn ends with a
+        press of the "end turn" button, shifting all marbles one space in their
+        orbit. This constant movement requires strategic thinking. Additionally,
+        you can move an opponent's marble once per turn, but remember, they can
+        do the same.
+        <br />
+        <br />
+        <a
+          href="https://www.tiktok.com/@games4two/video/7292228477258861866"
+          target="_blank"
+        >
+          View TikTok Video
+        </a>
+        <br />
+        <a
+          href="https://boardgamegeek.com/boardgame/383733/orbito#buyacopy"
+          target="_blank"
+        >
+          Buy A Copy
+        </a>
       </p>
     </div>
   );

@@ -1,63 +1,111 @@
 div.orbito__board {
-    display: grid;
-    height: 400px;
-    width: 400px;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(4, 1fr);
-    margin: 25px auto;
-    border: solid var(--white) 1px;
+  display: grid;
+  height: 400px;
+  width: 400px;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  margin: 25px auto;
+  border: solid var(--white) 1px;
+}
+
+div.orbito > p.orbito__links {
+  text-align: center;
+  margin: 0 auto 25px auto;
+  max-width: 400px;
+}
+
+div.orbito > p.orbito__links > a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+div.orbito > div.orbito__buttons {
+  text-align: center;
+  padding-bottom: 25px;
+}
+
+div.orbito > div.orbito__buttons > button.green {
+  background-color: var(--green);
+}
+
+div.orbito > div.orbito__buttons > button.red {
+  background-color: var(--red);
+}
+
+div.orbito > div.orbito__buttons > button {
+  margin: 0 5px;
+  font-weight: bold;
+  padding: 5px 15px;
+  border: none;
+  color: var(--white);
 }
 
 div.orbito > p.orbito__message {
-    text-align: center;
+  text-align: center;
 }
 
-div.orbito>p.orbito__message > span {
-    display: block;
+div.orbito > p.orbito__message > span.player {
+  padding: 15px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+div.orbito > p.orbito__message > span.red {
+  background-color: var(--red);
+}
+
+div.orbito > p.orbito__message > span.green {
+  background-color: var(--green);
+}
+
+div.orbito > p.orbito__message > span {
+  display: block;
 }
 
 div.orbito > h1.orbito__title {
-    text-align: center;
+  text-align: center;
+  margin-bottom: 0;
 }
 
 div.orbito__board__cell {
-    box-sizing: border-box;
-    border: solid var(--white) 1px;
-    cursor: pointer;
-    background-color: var(--brown);
-    overflow: hidden;
+  box-sizing: border-box;
+  border: solid var(--white) 1px;
+  cursor: pointer;
+  background-color: var(--brown);
+  overflow: hidden;
 }
 
 div.orbito__board__cell:hover {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 div.orbito__board__cell > div {
-    text-align: center;
+  text-align: center;
 }
 
-div.orbito__board__cell>div>svg {
-    height: 50px;
-    margin-top: 25px;
+div.orbito__board__cell > div > svg {
+  height: 50px;
+  margin-top: 25px;
 }
 
 div#orbito__cell-1,
 div#orbito__cell-2,
-div#orbito__cell-3, 
+div#orbito__cell-3,
 div#orbito__cell-6 {
-    transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 
 div#orbito__cell-0,
 div#orbito__cell-4,
 div#orbito__cell-8,
 div#orbito__cell-5 {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 div#orbito__cell-12,
 div#orbito__cell-13,
 div#orbito__cell-14,
 div#orbito__cell-9 {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
