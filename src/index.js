@@ -4,6 +4,7 @@ import "./style.css";
 import Navigation from "./components/Navigation";
 import Orbito from "./games/orbito";
 import Footer from "./components/Footer";
+import TapIt from "./games/tapit";
 
 const element = document.getElementById("root");
 const root = createRoot(element);
@@ -11,7 +12,7 @@ const root = createRoot(element);
 const App = () => (
   <>
     <Navigation />
-    <Orbito />
+    <TapIt />
     <Footer />
   </>
 );

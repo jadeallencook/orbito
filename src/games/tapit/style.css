@@ -1,0 +1,24 @@
+/* div.tapit__board {
+    display: grid;
+    height: 400px;
+    width: 400px;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    margin: 25px auto;
+    border: solid var(--white) 1px;
+} */
+
+section.tapit > p.tapit__message {
+    text-align: center;
+}
+
+section.tapit > h1.tapit__title {
+    text-align: center;
+}
+
+section.tapit > section.tapit__board {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding: 16px;
+}
