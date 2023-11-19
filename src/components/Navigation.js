@@ -3,7 +3,7 @@ import "./Navigation.css";
 
 const Navigation = () => (
   <nav>
-    <span>Games4Two</span>
+    <span>Orbito</span>
   </nav>
 );
 
